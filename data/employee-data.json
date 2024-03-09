@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Ross Gellar",
+    "image" : "/images/man1.png"
+  },
+  {
+    "id": 2,
+    "name": "Chandler Bing",
+    "image" : "/images/man2.png"
+  },
+  {
+    "id": 3,
+    "name": "Phoebe Buffay",
+    "image" : "/images/woman1.png"
+  }
+]

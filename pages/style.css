@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .containerScroll {
+  max-height: calc(100vh - 290px);
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: teal
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  /* *::-webkit-scrollbar {
+    width: 5px;
+    border-radius:5px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    @apply bg-white
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-teal-300 to-teal-600 rounded;
+  }
+}  */
+
+.customScrollBar {
+  scrollbar-width: thin;
+  scrollbar-color: #134e4a #ccfbf1;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* @apply bg-white */
+  background: #ccfbf1
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* @apply bg-gradient-to-b from-teal-300 to-teal-600 rounded; */
+  /* border-radius: 5px; */
+  background-color: #134e4a;
+  border-radius: 14px;
+  border: 2px solid #ccfbf1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0d9488;
+}

@@ -1,0 +1,239 @@
+[
+  {
+      "name":"New Leads",
+      "items": [
+          {
+              "id":1,
+              "priority": 0,
+              "leadNum": 1,
+              "custName": "Peter Parker",
+              "estTotal": 1000,
+              "chat": [
+                {
+                  "id": 1,
+                  "text": "This is a sample message",
+                  "author": 1,
+                  "date": "2024-03-06T00:00:00.000"
+                },
+                {
+                  "id": 2,
+                  "text": "This is another sample message",
+                  "author": 2,
+                  "date": "2024-03-06T00:00:00.000"
+                }
+              ],
+              "attachment": 2,
+              "assignedTo": 1,
+              "updates": [
+                {
+                  "id": 1,
+                  "type": "Editted Customer Name",
+                  "timestamp": "2024-03-07T15:56:00.000"
+                },
+                {
+                  "id": 1,
+                  "type": "Editted Estimated Job Total",
+                  "timestamp": "2024-03-08T10:27:00.000"
+                }
+              ]
+          },
+          {
+            "id":2,
+            "priority": 0,
+            "leadNum": 2,
+            "custName": "Venelipe Vee",
+            "estTotal": 1250,
+            "chat": [
+              {
+                "id": 1,
+                "text": "This is a sample message",
+                "author": 1,
+                "date": "2024-03-06T00:00:00.000"
+              },
+              {
+                "id": 2,
+                "text": "This is another sample message",
+                "author": 2,
+                "date": "2024-03-06T00:00:00.000"
+              }
+            ],
+            "attachment": 0,
+            "assignedTo": 2,
+            "statusUpdated": "2024-03-05"
+          }
+      ]
+  },
+  {
+      "name":"First Contact",
+      "items": [
+          {
+            "id":3,
+            "priority": 0,
+            "leadNum": 3,
+            "custName": "Cance Jones",
+            "estTotal": 7000,
+            "chat": [
+              {
+                "id": 1,
+                "text": "This is a sample message",
+                "author": 1,
+                "date": "2024-03-06T00:00:00.000"
+              },
+              {
+                "id": 2,
+                "text": "This is another sample message",
+                "author": 2,
+                "date": "2024-03-06T00:00:00.000"
+              }
+            ],
+            "attachment": 1,
+            "assignedTo": 3,
+            "statusUpdated": "2024-03-05"
+          }
+      ]
+  },
+  {
+      "name":"Second Contact",
+      "items": [
+          {
+            "id":4,
+            "priority": 0,
+            "leadNum": 4,
+            "custName": "Genny Panhorst",
+            "estTotal": 12500,
+            "chat": [
+              {
+                "id": 1,
+                "text": "This is a sample message",
+                "author": 1,
+                "date": "2024-03-06T00:00:00.000"
+              },
+              {
+                "id": 2,
+                "text": "This is another sample message",
+                "author": 2,
+                "date": "2024-03-06T00:00:00.000"
+              }
+            ],
+            "attachment": 12,
+            "assignedTo": 3,
+            "statusUpdated": "2024-03-05"
+          },
+          {
+            "id":5,
+            "priority": 0,
+            "leadNum": 5,
+            "custName": "Geo Storm",
+            "estTotal": 2000,
+            "chat": [
+              {
+                "id": 1,
+                "text": "This is a sample message",
+                "author": 1,
+                "date": "2024-03-06T00:00:00.000"
+              },
+              {
+                "id": 2,
+                "text": "This is another sample message",
+                "author": 2,
+                "date": "2024-03-06T00:00:00.000"
+              }
+            ],
+            "attachment": 4,
+            "assignedTo": 1,
+            "statusUpdated": "2024-03-05"
+          }
+      ]
+  },
+  {
+      "name":"Third Contact",
+      "items": [
+          {
+            "id":6,
+              "priority": 0,
+              "leadNum": 6,
+              "custName": "Benson Boon",
+              "estTotal": 1500,
+              "chat": [
+                {
+                  "id": 1,
+                  "text": "This is a sample message",
+                  "author": 1,
+                  "date": "2024-03-06T15:23:23.000"
+                },
+                {
+                  "id": 2,
+                  "text": "This is another sample message",
+                  "author": 2,
+                  "date": "2024-03-06T15:37:37.000"
+                },
+                {
+                  "id": 2,
+                  "text": "This is a really long message, with some more words, and then even more. I need some more still after that, and then perhaps a few additional ones.",
+                  "author": 2,
+                  "date": "2024-03-06T00:00:00.000"
+                }
+              ],
+              "attachment": 6,
+              "assignedTo": 2,
+              "statusUpdated": "2024-03-05"
+          },
+          {
+            "id":7,
+              "priority": 0,
+              "leadNum": 7,
+              "custName": "Ash Wednesday",
+              "estTotal": 15000,
+              "chat": [
+                {
+                  "id": 1,
+                  "text": "This is a sample message",
+                  "author": 1,
+                  "date": "2024-03-06T00:00:00.000"
+                },
+                {
+                  "id": 2,
+                  "text": "This is another sample message",
+                  "author": 2,
+                  "date": "2024-03-06T00:00:00.000"
+                }
+              ],
+              "attachment": 3,
+              "assignedTo": 1,
+              "statusUpdated": "2024-03-05"
+          },
+          {
+            "id":8,
+              "priority": 0,
+              "leadNum": 8,
+              "custName": "Mickey Mantle",
+              "estTotal": 12000,
+              "chat": [
+                {
+                  "id": 1,
+                  "text": "This is a sample message",
+                  "author": 1,
+                  "date": "2024-03-06T00:00:00.000"
+                },
+                {
+                  "id": 2,
+                  "text": "This is another sample message",
+                  "author": 2,
+                  "date": "2024-03-06T00:00:00.000"
+                }
+              ],
+              "attachment": 4,
+              "assignedTo": 2,
+              "statusUpdated": "2024-03-05"
+          }
+      ]
+  },
+  {
+    "name":"Won",
+    "items": []
+},
+{
+  "name":"Lost",
+  "items": []
+}
+]
