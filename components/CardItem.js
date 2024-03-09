@@ -15,29 +15,28 @@ import {
 import Image from "next/image";
 import { Draggable } from "react-beautiful-dnd";
 import Modal from "./Modal";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { ItemModalContext } from "@/ItemModalContext";
 import { ModalContext } from "@/ModalContext";
 import EmployeeData from "../data/employee-data.json";
 import { Combobox, Dialog, Disclosure, Transition } from "@headlessui/react";
 
+
+// *****************
+// I NEED TO ADD THE ABILITY TO ADD MESSAGES TO FORMDATA STATE AFTER THE SYSTEM CAN SEE WHO THE USER IS!!!!!
+// *****************
+
 function CardItem({ data, index }) {
-  // const { modalData, addItemModal, selectedCard } =
-  //   useContext(ItemModalContext);
-  // const [modalDataValue, setModalDataValue] = modalData;
-  // const [addItemModalValue, setAddItemModalValue] = addItemModal;
-  // const [selectedCardValue, setSelectedCardValue] = selectedCard;
-  console.log(EmployeeData);
-
   const { modalOpen, setModalOpen } = useContext(ModalContext);
-
-  // const [showAddItemModal, setShowAddItemModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
-  // console.log(datd
-  const [selectedEmployee, setSelectedEmployee] = useState(EmployeeData[0]);
-  // const [selectedEmployee, setSelectedEmployee] = useState(data?.assignedTo);
+  const [selectedEmployee, setSelectedEmployee] = useState(findAssignedTo(data.assignedTo));
   const [query, setQuery] = useState("");
+  const [formData, setFormData] = useState({
+    custName: data.custName,
+    estTotal: data.estTotal,
+    notes: data.notes,
+  })
 
   const filteredEmployees =
     query === ""
@@ -69,6 +68,11 @@ function CardItem({ data, index }) {
     return readableDate
   }
 
+  function findAssignedTo(id) {
+    const emp = EmployeeData.find(obj => obj.id === id)
+    return emp
+  }
+
   const updates = data.updates
   let lastUpdate = 'No Updates'
   if(updates?.length > 0) {
@@ -79,25 +83,32 @@ function CardItem({ data, index }) {
 
   const showModalHandler = (data) => {
     setModalData(data);
-    // console.log(data)
-    // setShowAddItemModal(true);
     setModalOpen(true);
-    // console.log(modalData)
-    // setSelectedCardValue(data.id);
-    // setSelectedCard(data.id)
     console.log(data);
   };
 
   const hideModalHandler = () => {
-    // setModalData(data)
-    // console.log(data)
     setModalOpen(false);
     setSelectedCard(null);
-    // console.log(modalData)
   };
 
-  console.log(modalData);
-  console.log(modalOpen);
+  const formHandler = (e) => {
+    const fieldName = e.target.name
+    const fieldValue = e.target.value
+    console.log(fieldName)
+    console.log(fieldValue)
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [fieldName]: fieldValue
+    }))
+  }
+
+  console.log(formData.notes);
+
+  useEffect(() => {
+    // setSelectedEmployee()
+  }, [formData, selectedEmployee]);
 
   return (
     <>
@@ -132,7 +143,7 @@ function CardItem({ data, index }) {
                       as="h3"
                       className="text-2xl font-medium leading-6 text-slate-900 pb-3"
                     >
-                      Lead #{data.leadNum} - {data.custName}
+                      Lead #{data.leadNum} - {formData.custName}
                     </Dialog.Title>
                     {/* <hr/> */}
                     <div className="mt-2">
@@ -148,7 +159,7 @@ function CardItem({ data, index }) {
                       </div>
                       <div className="w-full">
                         <label
-                          for="first-name"
+                          for="custName"
                           class="block text-sm font-medium leading-6 text-slate-900"
                         >
                           Customer Name
@@ -156,10 +167,12 @@ function CardItem({ data, index }) {
                         <div className="mt-1">
                           <input
                             type="text"
-                            name="customer-name"
-                            id="customer-name"
+                            name="custName"
+                            id="custName"
                             className="block w-full rounded-md border-0 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6 sm:max-w-md"
-                            value={data?.custName}
+                            value={formData.custName}
+                            // value={formData.custName}
+                            onChange={formHandler}
                           />
                         </div>
                         </div>
@@ -173,7 +186,7 @@ function CardItem({ data, index }) {
                         </div>
                         <div className="w-full">
                         <label
-                          for="first-name"
+                          for="estTotal"
                           className="block text-sm font-medium leading-6 text-slate-900"
                         >
                           Estimated Job Total
@@ -185,10 +198,11 @@ function CardItem({ data, index }) {
                             </span>
                             <input
                               type="text"
-                              name="job-estimate"
-                              id="job-estimate"
+                              name="estTotal"
+                              id="estTotal"
                               className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
-                              value={data?.estTotal}
+                              value={formData.estTotal}
+                              onChange={formHandler}
                             />
                           </div>
                         </div>
@@ -203,7 +217,7 @@ function CardItem({ data, index }) {
                         </div>
                         <div className="w-full">
                         <label
-                          for="assigned-employee"
+                          for="assignedTo"
                           className="block text-sm font-medium leading-6 text-slate-900"
                         >
                           Assigned Employee
@@ -215,7 +229,9 @@ function CardItem({ data, index }) {
                         </select> */}
                         <div className="mt-1">
                           <Combobox
-                            name="assignedEmployee"
+                            name="assignedTo"
+                            // value={formData.assignedTo}
+                            // onChange={setFormData}
                             value={selectedEmployee}
                             onChange={setSelectedEmployee}
                             // defaultValue={selectedEmployee}
@@ -327,12 +343,13 @@ function CardItem({ data, index }) {
                         </label>
                         <div className="mt-1">
                           <textarea
-                            id="about"
-                            name="about"
+                            id="notes"
+                            name="notes"
                             rows={4}
                             className="block w-full rounded-md border-0 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
-                            defaultValue={""}
-                            placeholder="Add any details..."
+                            value={formData.notes}
+                            placeholder="Add details and notes..."
+                            onChange={formHandler}
                           />
                         </div>
                         </div>
@@ -493,7 +510,7 @@ function CardItem({ data, index }) {
                       </h5> */}
                     </div>
 
-                    <div className="mt-4 flex justify-end">
+                    {/* <div className="mt-4 flex justify-end">
                       <button
                         className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
@@ -508,7 +525,7 @@ function CardItem({ data, index }) {
                       >
                         Save Changes
                       </button>
-                    </div>
+                    </div> */}
                   </Dialog.Panel>
                 </Transition.Child>
               </div>
@@ -572,7 +589,7 @@ function CardItem({ data, index }) {
                 {EmployeeData.map((employee, index) => {
                   return (
                     <>
-                      {data.assignedTo === employee.id ? (
+                      {selectedEmployee.id === employee.id ? (
                         <li key={index}>
                           <Image
                             src={employee.image}
@@ -627,10 +644,10 @@ function CardItem({ data, index }) {
               {/* </ul> */}
             </div>
             <h5 className="text-me mb-2 text-lg leading-6 text-slate-800">
-              {data.custName}
+              {formData.custName}
             </h5>
             <h5 className="text-me mb-2 text-lg leading-6 text-slate-800">
-              ${data.estTotal} (est job total)
+              ${formData.estTotal} (est job total)
             </h5>
 
             <div className="flex justify-between">
@@ -643,7 +660,7 @@ function CardItem({ data, index }) {
                   <PaperClipIcon className="w-4 h-4 text-slate-500" />
                   <span>{data.attachment}</span>
                 </span>
-                { data.notes ? (
+                { formData.notes ? (
                 <span className="flex space-x-1 items-center">
                   <Bars3BottomLeftIcon className="w-4 h-4 text-slate-500" />
                 </span> ) : ''
