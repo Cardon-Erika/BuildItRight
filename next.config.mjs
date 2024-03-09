@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  output: "export",
+  basePath: '/BuildItRight',
 
   // module.exports = {
     images: {
@@ -12,7 +14,7 @@ const nextConfig = {
         },
       ],
     },
-    distDir: 'build'
+    // distDir: 'build'
   // }
 };
 

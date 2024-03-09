@@ -4,8 +4,6 @@
   "homepage": "https://cardon-erika.github.io/BuildItRight/",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
