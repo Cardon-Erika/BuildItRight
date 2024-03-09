@@ -24,6 +24,7 @@
               ],
               "attachment": 2,
               "assignedTo": 1,
+              "notes": "This is a note. It is not long",
               "updates": [
                 {
                   "id": 1,

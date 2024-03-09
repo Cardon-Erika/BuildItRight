@@ -1,10 +1,16 @@
 import {
+  Bars3BottomLeftIcon,
+  ChatBubbleBottomCenterTextIcon,
   ChatBubbleLeftEllipsisIcon,
   CheckIcon,
   ChevronUpDownIcon,
   ChevronUpIcon,
+  CurrencyDollarIcon,
+  ListBulletIcon,
   PaperClipIcon,
   PlusIcon,
+  UserCircleIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Draggable } from "react-beautiful-dnd";
@@ -53,10 +59,20 @@ function CardItem({ data, index }) {
     return readableDate
   }
 
+  function formatDateOnly(timestamp) {
+    const parsedDate = new Date(timestamp);
+    const readableDate = parsedDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    })
+    return readableDate
+  }
+
   const updates = data.updates
   let lastUpdate = 'No Updates'
   if(updates?.length > 0) {
-    lastUpdate = formatTimestamp(updates[updates.length-1].timestamp)
+    lastUpdate = formatDateOnly(updates[updates.length-1].timestamp)
   }
 
   console.log(lastUpdate);
@@ -126,7 +142,11 @@ function CardItem({ data, index }) {
                       {/* <input className="text-me mb-2 text-lg leading-6 text-slate-800" value={data.custName} /> */}
 
                       {/* Customer Name */}
-                      <div className="my-5">
+                      <div className="my-5 flex flex-row">
+                      <div>
+                        <UserCircleIcon className="w-5 h-5 me-2 mt-1 text-slate-900" />
+                      </div>
+                      <div className="w-full">
                         <label
                           for="first-name"
                           class="block text-sm font-medium leading-6 text-slate-900"
@@ -142,11 +162,16 @@ function CardItem({ data, index }) {
                             value={data?.custName}
                           />
                         </div>
+                        </div>
                       </div>
                       {/* End Customer Name */}
 
                       {/* Job Estimate */}
-                      <div className="my-5">
+                      <div className="my-5 flex flex-row">
+                        <div>
+                          <CurrencyDollarIcon className="w-5 h-5 me-2 mt-1 text-slate-900" />
+                        </div>
+                        <div className="w-full">
                         <label
                           for="first-name"
                           className="block text-sm font-medium leading-6 text-slate-900"
@@ -167,11 +192,16 @@ function CardItem({ data, index }) {
                             />
                           </div>
                         </div>
+                        </div>
                       </div>
                       {/* End Job Estimate */}
 
                       {/* Assigned Employee */}
-                      <div className="my-5">
+                      <div className="my-5 flex flex-row">
+                        <div>
+                          <UserGroupIcon className="w-5 h-5 me-2 mt-1 text-slate-900" />
+                        </div>
+                        <div className="w-full">
                         <label
                           for="assigned-employee"
                           className="block text-sm font-medium leading-6 text-slate-900"
@@ -279,11 +309,16 @@ function CardItem({ data, index }) {
                             </div>
                           </Combobox>
                         </div>
+                        </div>
                       </div>
                       {/* End Assigned Employee */}
 
                       {/* Notes */}
-                      <div className="my-5">
+                      <div className="my-5 flex flex-row">
+                        <div>
+                          <Bars3BottomLeftIcon className="w-5 h-5 me-2 mt-1 text-slate-900" />
+                        </div>
+                        <div className="w-full">
                         <label
                           for="notes"
                           className="block text-sm font-medium leading-6 text-slate-900"
@@ -300,11 +335,16 @@ function CardItem({ data, index }) {
                             placeholder="Add any details..."
                           />
                         </div>
+                        </div>
                       </div>
                       {/* End Notes */}
 
                       {/* Messages */}
-                      <div className="my-5">
+                      <div className="my-5 flex flex-row">
+                        <div>
+                          <ChatBubbleBottomCenterTextIcon className="w-5 h-5 me-2 mt-1 text-slate-900" />
+                        </div>
+                        <div className="w-full">
                         <label
                           for="messages"
                           className="block text-sm font-medium leading-6 text-slate-900"
@@ -383,46 +423,17 @@ function CardItem({ data, index }) {
                             })}
                           </div>
                         </div>
+                        </div>
                       </div>
                       {/* End Messages */}
 
                       {/* Updates */}
-                      {/* <div className="my-5">
-                        <label
-                          for="first-name"
-                          class="block text-sm font-medium leading-6 text-slate-900"
-                        >
-                          Activity
-                        </label>
-                        <div className="mt-1">
-                          {data.updates.map((update, index) => {
-                            console.log(update);
-                            const parsedUpdateDate = new Date(update.timestamp);
-                            const readableUpdateDate =
-                              parsedUpdateDate.toLocaleDateString("en-US", {
-                                year: "numeric",
-                                month: "short",
-                                day: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              });
-                            return (
-                              <div key={index} className="text-xs pb-1">
-                                <p>
-                                  <span className="font-bold">
-                                    {update.type}
-                                  </span>
-                                  {" - "}
-                                  {readableUpdateDate}
-                                </p>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div> */}
-
                       {/* <div className="w-full px-4 pt-16"> */}
-                      <div className="w-full max-w-md bg-white my-5">
+                      <div className="my-5 flex flex-row">
+                        <div>
+                          <ListBulletIcon className="w-5 h-5 me-2 mt-1 text-slate-900" />
+                        </div>
+                        <div className="w-full">
                         <Disclosure>
                           {({ open }) => (
                             <>
@@ -469,6 +480,7 @@ function CardItem({ data, index }) {
                             </>
                           )}
                         </Disclosure>
+                        </div>
                       </div>
                       {/* </div> */}
                       {/* End Updates */}
@@ -622,15 +634,20 @@ function CardItem({ data, index }) {
             </h5>
 
             <div className="flex justify-between">
-              <div className="flex space-x-4 items-center">
-                <span className="flex space-x-2 items-center">
-                  <ChatBubbleLeftEllipsisIcon className="w-4 h-4 text-slate-500" />
+              <div className="flex space-x-6 items-center">
+                <span className="flex space-x-1 items-center">
+                  <ChatBubbleBottomCenterTextIcon className="w-4 h-4 text-slate-500" />
                   <span>{data.chat.length}</span>
                 </span>
-                <span className="flex space-x-2 items-center">
+                <span className="flex space-x-1 items-center">
                   <PaperClipIcon className="w-4 h-4 text-slate-500" />
                   <span>{data.attachment}</span>
                 </span>
+                { data.notes ? (
+                <span className="flex space-x-1 items-center">
+                  <Bars3BottomLeftIcon className="w-4 h-4 text-slate-500" />
+                </span> ) : ''
+                }
               </div>
 
               {/* <ul className="flex space-x-3">
@@ -655,7 +672,7 @@ function CardItem({ data, index }) {
                 </li>
               </ul> */}
             </div>
-            <h5 className="text-me text-sm leading-6 text-slate-800">
+            <h5 className="text-me text-sm leading-6 text-slate-500">
               Last Update: {lastUpdate}
             </h5>
           </div>
