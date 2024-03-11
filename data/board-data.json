@@ -28,11 +28,16 @@
               "updates": [
                 {
                   "id": 1,
+                  "type": "New Lead Created",
+                  "timestamp": "2024-03-07T15:56:00.000"
+                },
+                {
+                  "id": 2,
                   "type": "Editted Customer Name",
                   "timestamp": "2024-03-07T15:56:00.000"
                 },
                 {
-                  "id": 1,
+                  "id": 3,
                   "type": "Editted Estimated Job Total",
                   "timestamp": "2024-03-08T10:27:00.000"
                 }
@@ -60,7 +65,13 @@
             ],
             "attachment": 0,
             "assignedTo": 2,
-            "statusUpdated": "2024-03-05"
+            "updates": [
+              {
+                "id": 1,
+                "type": "New Lead Created",
+                "timestamp": "2024-03-07T15:56:00.000"
+              }
+            ]
           }
       ]
   },
@@ -89,7 +100,13 @@
             ],
             "attachment": 1,
             "assignedTo": 3,
-            "statusUpdated": "2024-03-05"
+            "updates": [
+              {
+                "id": 1,
+                "type": "New Lead Created",
+                "timestamp": "2024-03-07T15:56:00.000"
+              }
+            ]
           }
       ]
   },
@@ -118,7 +135,13 @@
             ],
             "attachment": 12,
             "assignedTo": 3,
-            "statusUpdated": "2024-03-05"
+            "updates": [
+              {
+                "id": 1,
+                "type": "New Lead Created",
+                "timestamp": "2024-03-07T15:56:00.000"
+              }
+            ]
           },
           {
             "id":5,
@@ -142,7 +165,13 @@
             ],
             "attachment": 4,
             "assignedTo": 1,
-            "statusUpdated": "2024-03-05"
+            "updates": [
+              {
+                "id": 1,
+                "type": "New Lead Created",
+                "timestamp": "2024-03-07T15:56:00.000"
+              }
+            ]
           }
       ]
   },
@@ -177,7 +206,13 @@
               ],
               "attachment": 6,
               "assignedTo": 2,
-              "statusUpdated": "2024-03-05"
+              "updates": [
+                {
+                  "id": 1,
+                  "type": "New Lead Created",
+                  "timestamp": "2024-03-07T15:56:00.000"
+                }
+              ]
           },
           {
             "id":7,
@@ -201,7 +236,13 @@
               ],
               "attachment": 3,
               "assignedTo": 1,
-              "statusUpdated": "2024-03-05"
+              "updates": [
+                {
+                  "id": 1,
+                  "type": "New Lead Created",
+                  "timestamp": "2024-03-07T15:56:00.000"
+                }
+              ]
           },
           {
             "id":8,
@@ -225,7 +266,13 @@
               ],
               "attachment": 4,
               "assignedTo": 2,
-              "statusUpdated": "2024-03-05"
+              "updates": [
+                {
+                  "id": 1,
+                  "type": "New Lead Created",
+                  "timestamp": "2024-03-07T15:56:00.000"
+                }
+              ]
           }
       ]
   },

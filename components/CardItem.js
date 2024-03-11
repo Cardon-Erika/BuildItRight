@@ -30,19 +30,20 @@ function CardItem({ data, index }) {
   const { modalOpen, setModalOpen } = useContext(ModalContext);
   const [modalData, setModalData] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedEmployee, setSelectedEmployee] = useState(findAssignedTo(data.assignedTo));
+  // const [selectedEmployee, setSelectedEmployee] = useState(findAssignedTo(data.assignedTo));
   const [query, setQuery] = useState("");
   const [formData, setFormData] = useState({
     custName: data.custName,
     estTotal: data.estTotal,
     notes: data.notes,
+    assignedTo: findAssignedTo(data.assignedTo)
   })
 
   const filteredEmployees =
     query === ""
       ? EmployeeData
-      : EmployeeData.filter((employee) => {
-          return employee.name.toLowerCase().includes(query.toLowerCase());
+      : EmployeeData.filter((emp) => {
+          return emp.name.toLowerCase().includes(query.toLowerCase());
         });
 
   function formatTimestamp(timestamp) {
@@ -79,7 +80,7 @@ function CardItem({ data, index }) {
     lastUpdate = formatDateOnly(updates[updates.length-1].timestamp)
   }
 
-  console.log(lastUpdate);
+  // console.log(lastUpdate);
 
   const showModalHandler = (data) => {
     setModalData(data);
@@ -93,8 +94,16 @@ function CardItem({ data, index }) {
   };
 
   const formHandler = (e) => {
-    const fieldName = e.target.name
-    const fieldValue = e.target.value
+    let fieldName = ''
+    let fieldValue = ''
+    console.log(e)
+    if (e.nativeEvent) {
+    fieldName = e.target.name
+    fieldValue = e.target.value
+    } else {
+    fieldName = 'assignedTo'
+    fieldValue = e
+    }
     console.log(fieldName)
     console.log(fieldValue)
 
@@ -104,11 +113,12 @@ function CardItem({ data, index }) {
     }))
   }
 
-  console.log(formData.notes);
+  // console.log(formData.notes);
 
   useEffect(() => {
+    console.log(formData)
     // setSelectedEmployee()
-  }, [formData, selectedEmployee]);
+  }, [formData]);
 
   return (
     <>
@@ -230,11 +240,8 @@ function CardItem({ data, index }) {
                         <div className="mt-1">
                           <Combobox
                             name="assignedTo"
-                            // value={formData.assignedTo}
-                            // onChange={setFormData}
-                            value={selectedEmployee}
-                            onChange={setSelectedEmployee}
-                            // defaultValue={selectedEmployee}
+                            value={formData.assignedTo}
+                            onChange={formHandler}
                           >
                             <div className="relative mt-1 sm:max-w-md rounded-md shadow-sm ring-1 ring-inset ring-slate-300">
                               {/* flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-teal-600 sm:max-w-md */}
@@ -587,9 +594,10 @@ function CardItem({ data, index }) {
               <ul className="flex space-x-3">
                 {/* <li>{`EmployeeData.map(employee => data.id === employee.id ? src=${employee.image} : '')`}</li> */}
                 {EmployeeData.map((employee, index) => {
+                  // console.log(formData.assignedTo)
                   return (
                     <>
-                      {selectedEmployee.id === employee.id ? (
+                      {formData.assignedTo.id === employee.id ? (
                         <li key={index}>
                           <Image
                             src={employee.image}

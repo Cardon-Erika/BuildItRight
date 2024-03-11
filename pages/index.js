@@ -4,11 +4,13 @@ import Layout from "@/components/Layout";
 import { useState } from "react";
 
 export default function Home() {
-  // const [ modalData, setModalData ] = useState(false)
-  // const [ addItemModal, setAddItemModal ] = useState(false)
-  // const [ selectedCard, setSelectedCard ] = useState(null)
-
   const [modalOpen, setModalOpen] = useState(false);
+  // const [formData, setFormData] = useState({
+    // custName,
+    // estTotal,
+    // notes
+  // })
+  // console.log(formData)
 
   return (
     // <ItemModalContext.Provider value={{modalData: [modalData, setModalData], addItemModal: [addItemModal, setAddItemModal], selectedCard: [selectedCard, setSelectedCard]}}>
