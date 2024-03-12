@@ -36,7 +36,8 @@ function CardItem({ data, index }) {
     custName: data.custName,
     estTotal: data.estTotal,
     notes: data.notes,
-    assignedTo: findAssignedTo(data.assignedTo)
+    // assignedTo: findAssignedTo(data.assignedTo)
+    assignedTo: data.assignedTo
   })
 
   const filteredEmployees =
@@ -47,7 +48,7 @@ function CardItem({ data, index }) {
         });
 
   function formatTimestamp(timestamp) {
-    console.log(timestamp)
+    // console.log(timestamp)
     const parsedDate = new Date(timestamp);
     const readableDate = parsedDate.toLocaleDateString("en-US", {
       year: "numeric",
@@ -102,7 +103,7 @@ function CardItem({ data, index }) {
     fieldValue = e.target.value
     } else {
     fieldName = 'assignedTo'
-    fieldValue = e
+    fieldValue = e.id
     }
     console.log(fieldName)
     console.log(fieldValue)
@@ -114,6 +115,8 @@ function CardItem({ data, index }) {
   }
 
   // console.log(formData.notes);
+  console.log(selectedCard)
+  console.log(index)
 
   useEffect(() => {
     console.log(formData)
@@ -240,7 +243,7 @@ function CardItem({ data, index }) {
                         <div className="mt-1">
                           <Combobox
                             name="assignedTo"
-                            value={formData.assignedTo}
+                            value={findAssignedTo(formData.assignedTo)}
                             onChange={formHandler}
                           >
                             <div className="relative mt-1 sm:max-w-md rounded-md shadow-sm ring-1 ring-inset ring-slate-300">
@@ -517,7 +520,7 @@ function CardItem({ data, index }) {
                       </h5> */}
                     </div>
 
-                    {/* <div className="mt-4 flex justify-end">
+                    <div className="mt-4 flex justify-end">
                       <button
                         className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
@@ -525,14 +528,14 @@ function CardItem({ data, index }) {
                       >
                         Close
                       </button>
-                      <button
+                      {/* <button
                         className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
                         // onClick={() => setModalDatalValue(false)}
                       >
                         Save Changes
-                      </button>
-                    </div> */}
+                      </button> */}
+                    </div>
                   </Dialog.Panel>
                 </Transition.Child>
               </div>
@@ -595,9 +598,10 @@ function CardItem({ data, index }) {
                 {/* <li>{`EmployeeData.map(employee => data.id === employee.id ? src=${employee.image} : '')`}</li> */}
                 {EmployeeData.map((employee, index) => {
                   // console.log(formData.assignedTo)
+                  // console.log(employee.id)
                   return (
                     <>
-                      {formData.assignedTo.id === employee.id ? (
+                      {formData.assignedTo === employee.id ? (
                         <li key={index}>
                           <Image
                             src={employee.image}
